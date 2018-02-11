@@ -101,13 +101,13 @@ class Resources(object):
     """
     def __init__(self, cpus=None, ram=None, disk=None, gpus=None):
         if cpus is None:
-            cpus = configuration.getint('operators', 'default_cpus')
+            cpus = configuration.conf.getint('operators', 'default_cpus')
         if ram is None:
-            ram = configuration.getint('operators', 'default_ram')
+            ram = configuration.conf.getint('operators', 'default_ram')
         if disk is None:
-            disk = configuration.getint('operators', 'default_disk')
+            disk = configuration.conf.getint('operators', 'default_disk')
         if gpus is None:
-            gpus = configuration.getint('operators', 'default_gpus')
+            gpus = configuration.conf.getint('operators', 'default_gpus')
 
         self.cpus = CpuResource(cpus)
         self.ram = RamResource(ram)
