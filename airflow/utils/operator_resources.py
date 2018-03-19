@@ -99,16 +99,12 @@ class Resources(object):
     :param gpus: The number of gpu units that are required
     :type gpus: long
     """
-    def __init__(self, cpus=None, ram=None, disk=None, gpus=None):
-        if cpus is None:
-            cpus = configuration.conf.getint('operators', 'default_cpus')
-        if ram is None:
-            ram = configuration.conf.getint('operators', 'default_ram')
-        if disk is None:
-            disk = configuration.conf.getint('operators', 'default_disk')
-        if gpus is None:
-            gpus = configuration.conf.getint('operators', 'default_gpus')
-
+    def __init__(self,
+                 cpus=configuration.conf.getint('operators', 'default_cpus'),
+                 ram=configuration.conf.getint('operators', 'default_ram'),
+                 disk=configuration.conf.getint('operators', 'default_disk'),
+                 gpus=configuration.conf.getint('operators', 'default_gpus')
+                 ):
         self.cpus = CpuResource(cpus)
         self.ram = RamResource(ram)
         self.disk = DiskResource(disk)
